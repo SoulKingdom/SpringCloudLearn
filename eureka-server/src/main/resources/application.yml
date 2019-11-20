@@ -8,6 +8,9 @@ spring:
 eureka:
   instance:
     hostname: localhost
+  #Eureka 有自我保护机制，通过在Eureka Server配置如下参数，可启动保护机制。
+  server:
+    enable-self-preservation: true
   #eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server
   client:
     #表示是否将自己注册到Eureka Server，默认为true。

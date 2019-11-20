@@ -1,0 +1,16 @@
+server:
+  port: 9002
+  ##eureka-server1节点配置，配置参数--spring.profiles.active=eureka-server1来启动该环境
+spring:
+  profiles: eureka-server1
+eureka:
+  client:
+    #设置与Eureka Server交互的地址
+    #查询服务和注册服务都需要依赖这个地址。
+    #默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。
+    serviceUrl:
+      defaultZone: http://eureka-server2:9003/eureka/
+  instance:
+    hostname: eureka-server1
+
+

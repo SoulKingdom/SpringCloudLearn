@@ -8,17 +8,21 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-server" />
         <module name="maste" />
+        <module name="eureka-server-to" />
         <module name="springcloud" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
       <module name="sc-eureka-server" target="1.8" />
       <module name="springcloud" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="eureka-server-to" options="-parameters" />
       <module name="maste" options="-parameters" />
       <module name="sc-eureka-server" options="-parameters" />
       <module name="springcloud" options="-parameters" />
