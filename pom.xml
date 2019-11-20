@@ -6,7 +6,56 @@
 
     <groupId>com.springcloud</groupId>
     <artifactId>maste</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.2.1.RELEASE</version>
+    <!--创建项目对应名称和描述-->
+    <name>sc-f-master</name>
+    <description>Demo project for Spring Boot</description>
+    <!--SpringBoot jar包文件-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath/>
+    </parent>
 
+    <modules>
+        <module>eureka-server</module>
+    </modules>
+    <!--设置默认jdk、编码格式和云服务版本 start-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    </properties>
+    <!--设置默认jdk、编码格式和云服务版本 end-->
+    <dependencyManagement>
+        <dependencies>
+            <!--依赖版本控制 start-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--依赖版本控制 start-->
+            <!--测试 start-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <!--测试 end-->
+        </dependencies>
+    </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
