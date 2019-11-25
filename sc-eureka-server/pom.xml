@@ -14,7 +14,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <!--名称描述-->
     <name>sc-eureka-server</name>
-    <description>Demo project for Spring Boot</description>
+    <description>eureka 单点注册中心</description>
 
     <dependencies>
         <!--eureka-server jar start-->

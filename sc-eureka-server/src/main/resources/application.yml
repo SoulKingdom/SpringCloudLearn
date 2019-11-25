@@ -3,7 +3,8 @@ server:
   port: 9001
 spring:
   application:
-    name: eurka-server
+    #服务对应名称
+    name: sc-eurka-server
 #eurekak对应路径
 eureka:
   instance:

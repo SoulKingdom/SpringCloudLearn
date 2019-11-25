@@ -21,6 +21,7 @@
     <modules>
         <module>sc-eureka-server</module>
         <module>sc-eureka-server-to</module>
+        <module>sc-eureka-client</module>
     </modules>
     <!--设置默认jdk、编码格式和云服务版本 start-->
     <properties>
