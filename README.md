@@ -38,5 +38,9 @@ About SpringCloud structure and expend
       + 配置pom文件
       + 配置yml文件
       + 设置启动类：启动类中添加@EnableDiscoveryClient注解，之后注册中心会有client服务 
+   3. 创建consumer模块，对应feign进行远程调用
+      + 配置pom，feign架包
+      + 创建feign远程调用接口
+      + controller调用远程方法
    
    

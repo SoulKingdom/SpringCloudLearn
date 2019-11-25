@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
     @GetMapping("/hello")
     public String index(@RequestParam String name) {
-        return "hello "+name+"，this is first messge";
+        return "hello " + name + "，this is first messge";
     }
 }

@@ -10,10 +10,10 @@
     </parent>
     <!--主结构共用pom end-->
     <groupId>com.springcloud</groupId>
-    <artifactId>sc-eureka-client</artifactId>
+    <artifactId>sc-eureka-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>sc-eureka-consumer</name>
+    <description>服务调用者</description>
 
     <dependencies>
         <!--eureka-server jar start-->
@@ -30,6 +30,11 @@
             <scope>test</scope>
         </dependency>
         <!--单元测试引用jar包 end-->
+        <!--Feign start-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--Feign end-->
     </dependencies>
-
 </project>

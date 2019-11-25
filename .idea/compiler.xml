@@ -7,10 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sc-eureka-server" />
-        <module name="sc-eureka-server-to" />
         <module name="maste" />
-        <module name="sc-eureka-client" />
         <module name="springcloud" />
+        <module name="sc-eureka-client" />
+        <module name="sc-eureka-server-to" />
+        <module name="sc-eureka-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +24,7 @@
       <module name="demo" options="-parameters" />
       <module name="maste" options="-parameters" />
       <module name="sc-eureka-client" options="-parameters" />
+      <module name="sc-eureka-consumer" options="-parameters" />
       <module name="sc-eureka-server" options="-parameters" />
       <module name="sc-eureka-server-to" options="-parameters" />
       <module name="springcloud" options="-parameters" />
