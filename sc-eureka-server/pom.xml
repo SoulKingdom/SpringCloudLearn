@@ -10,10 +10,10 @@
     </parent>
     <!--主结构共用pom end-->
     <groupId>com.springcloud</groupId>
-    <artifactId>eureka-server</artifactId>
+    <artifactId>sc-eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <!--名称描述-->
-    <name>eureka-server</name>
+    <name>sc-eureka-server</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>

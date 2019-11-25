@@ -8,9 +8,9 @@
         <version>2.2.1.RELEASE</version>
     </parent>
     <groupId>com.eureka-server-to</groupId>
-    <artifactId>eureka-server-to</artifactId>
+    <artifactId>sc-eureka-server-to</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-server-to</name>
+    <name>sc-eureka-server-to</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
