@@ -85,4 +85,4 @@
 #### Feign实现熔断器(sc-eureka-consumer)
    1. 配置文件：feign.hystrix.enabled=true
    2. 创建回调类
-   3. 添加fallback属性
+   3. feign接口添加fallback属性
