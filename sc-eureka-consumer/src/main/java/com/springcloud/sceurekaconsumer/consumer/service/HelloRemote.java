@@ -1,5 +1,6 @@
 package com.springcloud.sceurekaconsumer.consumer.service;
 
+import com.springcloud.sceurekaconsumer.fallbacks.HelloRemoteHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *  @author HaoXin.Liu
  *  @date 2019/11/25 17:20
  **/
-@FeignClient(name = "sc-eurka-client")
+@FeignClient(name = "sc-eurka-client",fallback = HelloRemoteHystrix.class)
 public interface HelloRemote {
     @RequestMapping(value = "/test/hello")
     String hello(@RequestParam(value = "name") String name);

@@ -2,7 +2,7 @@
 ## 一、微服务框架基本结构
 - name(port)  
 -- sc-eureka-server(9001) 单点注册中心  
--- sc-eureka-server-to(9002,9003)双点注册中心  
+-- sc-eureka-server-to(9002,9003)双点注册中心,也可以多点，集群的初始概念  
 -- sc-eureka-client(9005)注册服务  
 -- sc-client-to(9007)第二个注册服务  9005和9007进行负载均衡的作用,相同名称
 -- sc-eureka-consumer(9006)通过feign进行服务调用服务  
@@ -48,6 +48,13 @@
                 return new RestTemplate();
             }````  
 ### feign远程调用（集成了ribbon）
+### 功能点
+   1. 注册中心注册服务
+   2. @EnableFeignClients注解开启Feign的功能
+   2. 通过@ FeignClient（“服务名”）匹配对应服务名称
+   3. 调用服务名称对应服务
+   4. feign集成ribbon服务，默认负载均衡
+   5. 实现模块：sc-eureka-consumer
 ## 四、在开启服务中心之后，服务提供和调用
 ### 功能点
    1. 在注册中心注册服务
@@ -66,5 +73,16 @@
 ### feign为服务提供者提供了负载均衡处理
    1. 在client的基础上，在创建一个相同name不过端口号不同的client（sc-client-to）注意:yml的名称要相同才能负载均衡
    2. 然后开启调用者consumer进行feign调用，结果交替执行
-   
-   
+## 五、Hystrix熔断器
+作用：防止服务故障“雪崩”现象   
+#### 功能点
+   1. 断路器机制  (OPEN)->(HALF-OPEN)->(ClOSED)->(OPEND)
+   2. Fallback 如果服务出现故障，返回一个固定值Fallback
+   3. 资源隔离
+   4. 熔断只是作用在服务调用这一端  
+   5. Feign中已经依赖了Hystrix
+### 如何实现熔断器Hystrix
+#### Feign实现熔断器(sc-eureka-consumer)
+   1. 配置文件：feign.hystrix.enabled=true
+   2. 创建回调类
+   3. 添加fallback属性

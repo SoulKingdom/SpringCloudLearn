@@ -23,6 +23,7 @@
         <module>sc-eureka-server-to</module>
         <module>sc-eureka-client</module>
         <module>sc-eureka-consumer</module>
+        <module>sc-ribbon</module>
     </modules>
     <!--设置默认jdk、编码格式和云服务版本 start-->
     <properties>

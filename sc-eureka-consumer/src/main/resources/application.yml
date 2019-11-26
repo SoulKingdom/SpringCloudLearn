@@ -5,6 +5,10 @@ spring:
   application:
     #服务名称
     name: sc-eurka-consumer
+feign:
+  #开启熔断器
+  hystrix:
+    enabled: true
 eureka:
   client:
     #调用服务
