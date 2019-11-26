@@ -86,3 +86,7 @@
    1. 配置文件：feign.hystrix.enabled=true
    2. 创建回调类
    3. feign接口添加fallback属性
+### Ribbon实现熔断器(sc-ribbon)
+   1. 启动类 加@EnableHystrix注解开启Hystrix
+   2. ribbon的service方法添加@HystrixCommand注解
+   3. 写熔断器fallback的方法
