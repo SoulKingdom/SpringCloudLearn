@@ -1,17 +1,16 @@
-#·şÎñ¶Ë¿Ú
+#æœåŠ¡ç«¯å£å·
 server:
   port: 9006
 spring:
   application:
-    #·şÎñ¶ÔÓ¦Ãû³Æ
+    #æœåŠ¡åç§°
     name: sc-eurka-consumer
 eureka:
-  #eureka.·şÎñ
   client:
-    #·şÎñÂ·¾¶
+    #è°ƒç”¨æœåŠ¡
     serviceUrl:
-      #ÉèÖÃÓëEureka Server½»»¥µÄµØÖ·
-      #²éÑ¯·şÎñºÍ×¢²á·şÎñ¶¼ĞèÒªÒÀÀµÕâ¸öµØÖ·¡£
-      #Ä¬ÈÏÊÇhttp://localhost:8761/eureka £»¶à¸öµØÖ·¿ÉÊ¹ÓÃ , ·Ö¸ô¡£
+      #è®¾ç½®ä¸Eureka Serveräº¤äº’çš„åœ°å€
+      #æŸ¥è¯¢æœåŠ¡å’Œæ³¨å†ŒæœåŠ¡éƒ½éœ€è¦ä¾èµ–è¿™ä¸ªåœ°å€ã€‚
+      #é»˜è®¤æ˜¯http://localhost:8761/eureka ï¼›å¤šä¸ªåœ°å€å¯ä½¿ç”¨ , åˆ†éš”ã€‚
       defaultZone: http://localhost:9001/eureka/
 

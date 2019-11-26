@@ -1,5 +1,11 @@
 # SpringCloudLearn
-About SpringCloud structure and expend
+## 微服务框架基本结构
+-- sc-eureka-server(9001) 单点注册中心  
+-- sc-eureka-server-to(9002,9003)双点注册中心  
+-- sc-eureka-client(9005)注册服务  
+-- sc-client-to(9007)第二个注册服务  9005和9007进行负载均衡的作用,相同名称
+-- sc-eureka-consumer(9006)通过feign进行服务调用服务 
+-- 
 ## 注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -42,5 +48,8 @@ About SpringCloud structure and expend
       + 配置pom，feign架包
       + 创建feign远程调用接口
       + controller调用远程方法
+### feign为服务提供者提供了负载均衡处理
+   1. 在client的基础上，在创建一个相同name不过端口号不同的client（sc-client-to）注意:yml的名称要相同才能负载均衡
+   2. 然后开启调用者consumer进行feign调用，结果交替执行
    
    

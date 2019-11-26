@@ -13,8 +13,7 @@
     <artifactId>sc-eureka-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo</name>
-    <description>Demo project for Spring Boot</description>
-
+    <description>服务调用client</description>
     <dependencies>
         <!--eureka-server jar start-->
         <dependency>

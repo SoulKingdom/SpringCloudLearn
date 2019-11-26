@@ -1,6 +1,6 @@
 #服务端口
 server:
-  port: 9005
+  port: 9007
 spring:
   application:
     #服务对应名称
