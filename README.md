@@ -1,12 +1,13 @@
 # SpringCloudLearn
-## 微服务框架基本结构
+## 一、微服务框架基本结构
+- name(port)  
 -- sc-eureka-server(9001) 单点注册中心  
 -- sc-eureka-server-to(9002,9003)双点注册中心  
 -- sc-eureka-client(9005)注册服务  
 -- sc-client-to(9007)第二个注册服务  9005和9007进行负载均衡的作用,相同名称
--- sc-eureka-consumer(9006)通过feign进行服务调用服务 
--- 
-## 注册中心Eureka的创建
+-- sc-eureka-consumer(9006)通过feign进行服务调用服务  
+-- sc-ribbon(9008)ribbon进行远程服务调用  
+## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
    2. 注册组件有（配置管理、服务发现、断路器、路由、微代理、事件总线、全局锁、决策竞选、分布式会话等）
@@ -33,7 +34,21 @@
         - 注意：要保证注册中心多个启动，只启动一个会出现另一个注册中心无法连接的错误，不影响运行。
       + 高可用验证
         - 如果出现其中一个节点宕机,另外一个中心正常运行，注册不会存在问题，只是宕机的服务会变成 unavailable-replicas；
-## 在开启服务中心之后，服务提供和调用
+## 三、Spring cloud有两种服务调用方式
+### ribbon+restTemplate远程调用
+### 功能点
+   1. 注册中心注册服务
+   2. ribbon开启负载均衡
+   3. 调用对应服务路径
+### 如何创建
+   1. 在注册中心创建ribbon服务
+   2. @LoadBalanced方法在启动项开启负载均衡  
+     - ````@LoadBalanced
+            RestTemplate restTemplate() {
+                return new RestTemplate();
+            }````  
+### feign远程调用（集成了ribbon）
+## 四、在开启服务中心之后，服务提供和调用
 ### 功能点
    1. 在注册中心注册服务
    2. 客户端去调用服务

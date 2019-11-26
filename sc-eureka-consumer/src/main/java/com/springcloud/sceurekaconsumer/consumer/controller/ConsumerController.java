@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 
 /**
  *  @dept 上海软件研发中心
- *  @description TODO
+ *  @description 远程服务调用测试
  *  @author HaoXin.Liu
  *  @date 2019/11/25 17:29
  **/
