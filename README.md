@@ -90,3 +90,18 @@
    1. 启动类 加@EnableHystrix注解开启Hystrix
    2. ribbon的service方法添加@HystrixCommand注解
    3. 写熔断器fallback的方法
+### 熔断器集成Hystrix Dashboard监控
+注意：SpringBoot2.0以上版本@HystrixCommand找不到的手动添加对应依赖就行了<dependency> <groupId>com.netflix.hystrix</groupId> <artifactId>hystrix-javanica</artifactId> </dependency>
+这个错误找了好久，版本比较高。需要所以Feign在整合的时候，因为添加@EnableCircuitBreaker会报错。  
+高版本SpringBoot需要配置Dashboard才可以有监控。[https://blog.csdn.net/ddxd0406/article/details/79643059]  
+  + 解决：Unable to connect to Command Metric Stream.
+    - 在启动类中添加````@Bean
+                  public ServletRegistrationBean getServlet(){
+                      HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
+                      ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
+                      registrationBean.setLoadOnStartup(1);
+                      registrationBean.addUrlMappings("/actuator/hystrix.stream");
+                      registrationBean.setName("HystrixMetricsStreamServlet");
+                      return registrationBean;
+                  }````  
+     
