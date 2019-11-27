@@ -7,6 +7,8 @@
 -- sc-client-to(9007)第二个注册服务  9005和9007进行负载均衡的作用,相同名称
 -- sc-eureka-consumer(9006)通过feign进行服务调用服务  
 -- sc-ribbon(9008)ribbon进行远程服务调用  
+-- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控
+-- sc-config-server(9010) Spring Cloud Config 配置中心
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -115,3 +117,11 @@
      - eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/
    + 启动类增加注解@EnableTurbine，激活对Turbine的支持
    + 访问Turbine路径：http://localhost:9009/turbine.stream
+## Spring Cloud Config 文件配置中心
+### 功能点
+  + 提供服务端和客户端支持
+  + 集中管理各环境的配置文件
+  + 配置文件修改之后，可以快速的生效
+  + 可以进行版本管理
+  + 支持大的并发查询
+  + 支持各种语言

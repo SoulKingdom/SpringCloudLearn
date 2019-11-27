@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--主结构共用pom start-->
+    <parent>
+        <groupId>com.springcloud</groupId>
+        <artifactId>maste</artifactId>
+        <version>2.2.1.RELEASE</version>
+    </parent>
+    <!--主结构共用pom end-->
+    <groupId>com.springcloud</groupId>
+    <artifactId>sc-config-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>sc-config-server</name>
+    <description>config-server 配置中心</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+        <!--单元测试引用jar包 start-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.1.7.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <!--单元测试引用jar包 end-->
+    </dependencies>
+
+</project>

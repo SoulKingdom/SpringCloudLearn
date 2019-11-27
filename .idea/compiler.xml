@@ -9,12 +9,13 @@
         <module name="sc-eureka-server" />
         <module name="sc-hystrix-dashboard-turbine" />
         <module name="maste" />
-        <module name="sc-ribbon" />
+        <module name="sc-config-server" />
+        <module name="sc-client-to" />
         <module name="springcloud" />
         <module name="sc-eureka-client" />
         <module name="sc-eureka-server-to" />
         <module name="sc-eureka-consumer" />
-        <module name="sc-client-to" />
+        <module name="sc-ribbon" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +28,7 @@
       <module name="demo" options="-parameters" />
       <module name="maste" options="-parameters" />
       <module name="sc-client-to" options="-parameters" />
+      <module name="sc-config-server" options="-parameters" />
       <module name="sc-eureka-client" options="-parameters" />
       <module name="sc-eureka-consumer" options="-parameters" />
       <module name="sc-eureka-server" options="-parameters" />
