@@ -9,6 +9,7 @@
 -- sc-ribbon(9008)ribbon进行远程服务调用  
 -- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控
 -- sc-config-server(9010) Spring Cloud Config 配置中心
+-- sc-config-client(9011) Spring Cloud Config 配置中心客户端
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -125,3 +126,15 @@
   + 可以进行版本管理
   + 支持大的并发查询
   + 支持各种语言
+### 创建Spring Cloud Config
+  + 添加pom文件
+  + 写yml配置git,svn文件，本地文件等等
+  + 增加@EnableConfigServer，激活对配置中心的支持
+  + 访问路径
+    - /{application}/{profile}[/{label}]
+    - /{application}-{profile}.yml
+    - /{label}/{application}-{profile}.yml
+    - /{application}-{profile}.properties
+    - /{label}/{application}-{profile}.properties
+### client实现
+  + 

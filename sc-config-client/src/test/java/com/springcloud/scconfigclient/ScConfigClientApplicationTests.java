@@ -1,10 +1,10 @@
-package com.springcloud.scconfigserver;
+package com.springcloud.scconfigclient;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ScConfigServerApplicationTests {
+class ScConfigClientApplicationTests {
 
     @Test
     void contextLoads() {

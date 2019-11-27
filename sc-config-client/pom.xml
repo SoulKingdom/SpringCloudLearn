@@ -10,17 +10,20 @@
     </parent>
     <!--主结构共用pom end-->
     <groupId>com.springcloud</groupId>
-    <artifactId>sc-eureka-client</artifactId>
+    <artifactId>sc-config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sc-eureka-client</name>
-    <description>服务调用client</description>
+    <name>sc-config-client</name>
+    <description>config-client 配置中心客户端</description>
+
     <dependencies>
-        <!--eureka-server jar start-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        <!--eureka-server jar end-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--单元测试引用jar包 start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

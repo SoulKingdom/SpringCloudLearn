@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      #对应{application}部分
+      name: neo-config
+      #对应{profile}部分
+      profile: dev
+      #配置中心的具体地址
+      uri: http://localhost:9010/
+      #配置文件分支
+      label: master
