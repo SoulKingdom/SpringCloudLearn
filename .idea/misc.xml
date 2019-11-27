@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/sc-eureka-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/sc-client-to/pom.xml" />
         <option value="$PROJECT_DIR$/sc-ribbon/pom.xml" />
+        <option value="$PROJECT_DIR$/sc-hystrix-dashboard-turbine/pom.xml" />
       </list>
     </option>
   </component>

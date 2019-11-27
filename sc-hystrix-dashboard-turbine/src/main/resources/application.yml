@@ -1,0 +1,21 @@
+#服务端口
+server:
+  port: 9009
+spring:
+  application:
+    #服务对应名称
+    name: hystrix-dashboard-turbine
+eureka:
+  client:
+    #服务路径
+    serviceUrl:
+      #设置与Eureka Server交互的地址
+      #查询服务和注册服务都需要依赖这个地址。
+      #默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。
+      defaultZone: http://localhost:9001/eureka/
+#熔断器集群监控配置
+turbine:
+  app-config: sc-eurka-consumer,sc-ribbon
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")

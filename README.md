@@ -104,4 +104,14 @@
                       registrationBean.setName("HystrixMetricsStreamServlet");
                       return registrationBean;
                   }````  
-     
+ ### 熔断器集群Turbine监控 
+   + 添加pom依赖
+   + 配置文件
+     - spring.application.name=hystrix-dashboard-turbine
+     - server.port=9009
+     - turbine.appConfig=node01,node02
+     - turbine.aggregator.clusterConfig= default
+     - turbine.clusterNameExpression= new String("default")
+     - eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/
+   + 启动类增加注解@EnableTurbine，激活对Turbine的支持
+   + 访问Turbine路径：http://localhost:9009/turbine.stream

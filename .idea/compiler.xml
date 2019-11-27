@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sc-eureka-server" />
+        <module name="sc-hystrix-dashboard-turbine" />
         <module name="maste" />
         <module name="sc-ribbon" />
         <module name="springcloud" />
@@ -30,6 +31,7 @@
       <module name="sc-eureka-consumer" options="-parameters" />
       <module name="sc-eureka-server" options="-parameters" />
       <module name="sc-eureka-server-to" options="-parameters" />
+      <module name="sc-hystrix-dashboard-turbine" options="-parameters" />
       <module name="sc-ribbon" options="-parameters" />
       <module name="springcloud" options="-parameters" />
     </option>
