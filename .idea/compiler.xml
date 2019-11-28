@@ -7,17 +7,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sc-eureka-server" />
-        <module name="sc-config-service-to" />
-        <module name="sc-hystrix-dashboard-turbine" />
-        <module name="sc-eureka-client" />
-        <module name="maste" />
-        <module name="sc-ribbon" />
-        <module name="springcloud" />
-        <module name="sc-config-server" />
-        <module name="sc-eureka-server-to" />
-        <module name="sc-config-client" />
-        <module name="sc-eureka-consumer" />
         <module name="sc-client-to" />
+        <module name="sc-hystrix-dashboard-turbine" />
+        <module name="maste" />
+        <module name="sc-config-server" />
+        <module name="sc-config-client" />
+        <module name="springcloud" />
+        <module name="sc-eureka-client" />
+        <module name="sc-eureka-server-to" />
+        <module name="sc-config-service-to" />
+        <module name="sc-eureka-consumer" />
+        <module name="sc-config-client-to" />
+        <module name="sc-ribbon" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,6 +32,7 @@
       <module name="maste" options="-parameters" />
       <module name="sc-client-to" options="-parameters" />
       <module name="sc-config-client" options="-parameters" />
+      <module name="sc-config-client-to" options="-parameters" />
       <module name="sc-config-server" options="-parameters" />
       <module name="sc-config-service-to" options="-parameters" />
       <module name="sc-eureka-client" options="-parameters" />

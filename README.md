@@ -154,3 +154,18 @@
 ### 配置中心服务化和高可用
    1. config server和client加入注册中心 实现服务化
    2. 创建新的config server 更改端口为9012 实现Sping Config 高可用
+## Spring Cloud Bus 消息总线
+### 功能点
+  + 用于广播配置文件的更改
+  + 服务之间的通讯
+  + 目前唯一实现的方式是用AMQP消息代理作为通道
+### 创建服务
+  1. 添加依赖 spring-cloud-starter-bus-amqp和rabbitMQ
+  2. 配置文件
+  3. 改进通过config servce支持总线，进行更新配置
+     - 通知消息总线curl -X POST http://localhost:9010/actuator/bus-refresh 
+  4. 局部刷新
+     - /bus/refresh?destination=customers:8000，这样消息总线上的微服务实例就会根据destination参数的值来判断是否需要要刷新。其中，customers:8000指的是各个微服务的ApplicationContext ID。
+     - /bus/refresh?destination=customers:**，这样就可以触发customers微服务所有实例的配置刷新。
+     - 等
+   5. 跟踪总线 /trace

@@ -4,19 +4,37 @@ spring:
   application:
     name: config-server
   cloud:
+    # Spring cloud bus 消息总线配置
+    bus:
+      trace:
+        enabled: true
+      enabled: true
     config:
       server:
         git:
-          # git�ļ�·��
+          # git路径
           uri: https://github.com/SoulKingdom/SpringCloudLearn/
-          # git ��ѯ·��
+          # git 目录
           search-paths: config-repo
-          # git�û���
+          # git账户
           username: SoulKingdom
-          # git����
+          # git密码
           password: mm609130
+  #rabblitMQ配置数据
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#springboot 1.5.X 以上默认开通了安全认证，所以需要在配置文件application.properties添加以下配置
+management:
+  endpoints:
+    web:
+      exposure:
+        #代替的全部放开请使用*，或把需要开放的接口端点使用“,”隔开，如：env,health。 bus-refresh
+        include: "*"
 eureka:
   client:
     serviceUrl:
-      # ע������eurka��ַ
+      # 注册中心eurka地址
       defaultZone: http://localhost:9001/eureka/

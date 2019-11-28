@@ -1,5 +1,5 @@
 server:
-  port: 9011
+  port: 9013
 spring:
   cloud:
     # Spring cloud bus 消息总线配置
@@ -20,5 +20,5 @@ management:
   endpoints:
     web:
       exposure:
-        #代替的全部放开请使用*，或把需要开放的接口端点使用“,”隔开，如：env,health。 bus-refresh
+        #代替的全部放开请使用*，或把需要开放的接口端点使用“,”隔开，如：env,health。
         include: "*"
