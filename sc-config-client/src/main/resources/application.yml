@@ -3,3 +3,10 @@ server:
 spring:
   application:
     name: config-client
+#springboot 1.5.X 以上默认开通了安全认证，所以需要在配置文件application.properties添加以下配置
+management:
+  endpoints:
+    web:
+      exposure:
+        #代替的全部放开请使用*，或把需要开放的接口端点使用“,”隔开，如：env,health。
+        include: "*"

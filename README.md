@@ -9,7 +9,7 @@
 -- sc-ribbon(9008)ribbon进行远程服务调用  
 -- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控
 -- sc-config-server(9010) Spring Cloud Config 配置中心
--- sc-config-client(9011) Spring Cloud Config 配置中心客户端
+-- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -137,4 +137,18 @@
     - /{application}-{profile}.properties
     - /{label}/{application}-{profile}.properties
 ### client实现
-  + 
+  + 添加config client pom依赖
+  + 配置application和bootstrap的yml文件
+  + 使用@Value注解来获取server端参数的值
+---- 注意：不能因为git，动态刷新git中的数据，只有在项目启动的时候，才会调用配置文件，需要重启服务。后面会有动态刷配置服务数据refresh;
+           但是，配置文件每次刷新都要CMD通过手动curl -X POST http://localhost:9011/actuator/refresh来重新刷新配置文件
+### 动态刷配置服务数据refresh
+   1. 添加actuator依赖      
+   2. 开启更新机制
+      - 需要给加载变量的类上面加载@RefreshScope，在客户端执行/refresh的时候就会更新此类下面的变量值。
+      - 配置文件application.properties添加以下配置
+        - management.security.enabled： springboot 1.5.X 以上默认开通了安全认证，所以需要添加这个配置
+        -  management.endpoints.web.exposure.include： springboot 2.x 默认只开启了info、health的访问，*代表开启所有访问
+      - 手动刷新配置文件 curl -X POST http://localhost:9011/actuator/refresh  （9011属于客户端配置端口号）
+### 配置中心服务化和高可用
+#### 加入注册中心
