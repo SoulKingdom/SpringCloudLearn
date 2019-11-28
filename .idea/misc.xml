@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/sc-hystrix-dashboard-turbine/pom.xml" />
         <option value="$PROJECT_DIR$/sc-config-server/pom.xml" />
         <option value="$PROJECT_DIR$/sc-config-client/pom.xml" />
+        <option value="$PROJECT_DIR$/sc-config-service-to/pom.xml" />
       </list>
     </option>
   </component>

@@ -10,6 +10,7 @@
 -- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控
 -- sc-config-server(9010) Spring Cloud Config 配置中心
 -- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
+-- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -151,4 +152,5 @@
         -  management.endpoints.web.exposure.include： springboot 2.x 默认只开启了info、health的访问，*代表开启所有访问
       - 手动刷新配置文件 curl -X POST http://localhost:9011/actuator/refresh  （9011属于客户端配置端口号）
 ### 配置中心服务化和高可用
-#### 加入注册中心
+   1. config server和client加入注册中心 实现服务化
+   2. 创建新的config server 更改端口为9012 实现Sping Config 高可用

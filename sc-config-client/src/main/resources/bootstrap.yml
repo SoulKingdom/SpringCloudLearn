@@ -1,11 +1,20 @@
 spring:
   cloud:
     config:
+      discovery:
+        #开启Config服务发现支持
+        enabled: true
+        serviceId: config-server
       #对应{application}部分
       name: neo-config
       #对应{profile}部分
       profile: dev
       #配置中心的具体地址
-      uri: http://localhost:9010/
+      #uri: http://localhost:9010/
       #配置文件分支
       label: master
+eureka:
+  client:
+    serviceUrl:
+      # 注册中心eurka地址
+      defaultZone: http://localhost:9001/eureka/

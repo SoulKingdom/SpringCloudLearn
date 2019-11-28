@@ -9,12 +9,11 @@
         <version>2.2.1.RELEASE</version>
     </parent>
     <!--主结构共用pom end-->
-    <groupId>com.springcloud</groupId>
-    <artifactId>sc-config-server</artifactId>
+    <groupId>com.springcoud</groupId>
+    <artifactId>sc-config-service-to</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sc-config-server</name>
-    <description>config-server 配置中心</description>
-
+    <name>sc-config-service-to</name>
+    <description>Demo project for Spring Boot</description>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -33,5 +32,4 @@
         </dependency>
         <!--单元测试引用jar包 end-->
     </dependencies>
-
 </project>

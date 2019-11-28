@@ -1,5 +1,5 @@
 server:
-  port: 9010
+  port: 9012
 spring:
   application:
     name: config-server
@@ -7,16 +7,16 @@ spring:
     config:
       server:
         git:
-          # gitæ–‡ä»¶è·¯å¾„
+          # gitÎÄ¼şÂ·¾¶
           uri: https://github.com/SoulKingdom/SpringCloudLearn/
-          # git æŸ¥è¯¢è·¯å¾„
+          # git ²éÑ¯Â·¾¶
           search-paths: config-repo
-          # gitç”¨æˆ·å
+          # gitÓÃ»§Ãû
           username: SoulKingdom
-          # gitå¯†ç 
+          # gitÃÜÂë
           password: mm609130
 eureka:
   client:
     serviceUrl:
-      # æ³¨å†Œä¸­å¿ƒeurkaåœ°å€
+      # ×¢²áÖĞĞÄeurkaµØÖ·
       defaultZone: http://localhost:9001/eureka/

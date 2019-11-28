@@ -10,3 +10,8 @@ management:
       exposure:
         #代替的全部放开请使用*，或把需要开放的接口端点使用“,”隔开，如：env,health。
         include: "*"
+eureka:
+  client:
+    serviceUrl:
+      # 注册中心eurka地址
+      defaultZone: http://localhost:9001/eureka/
