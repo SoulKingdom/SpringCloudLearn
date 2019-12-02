@@ -24,6 +24,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+        <!--路由重试 start-->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+        <!--路由重试 end-->
         <!--单元测试引用jar包 start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

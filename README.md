@@ -178,6 +178,28 @@
    + 网关路由
    + 服务化
    + 网关默认路由规则：默认支持负载均衡、注册服务和转发服务
+   + Filter服务过滤：鉴权、流量转发、请求统计等等
+      + 过滤器类型
+       - PRE： 这种过滤器在请求被路由之前调用。我们可利用这种过滤器实现身份验证、在集群中选择请求的微服务、记录调试信息等。
+       - ROUTING：这种过滤器将请求路由到微服务。这种过滤器用于构建发送给微服务的请求，并使用Apache HttpClient或Netfilx Ribbon请求微服务。
+       - POST：这种过滤器在路由到微服务以后执行。这种过滤器可用来为响应添加标准的HTTP Header、收集统计信息和指标、将响应从微服务发送给客户端等。
+       - ERROR：在其他阶段发生错误时执行该过滤器。 除了默认的过滤器类型，Zuul还允许我们创建自定义的过滤器类型。例如，我们可以定制一种STATIC类型的过滤器，直接在Zuul中生成响应，而不将请求转发到后端的微服务。
+      + 默认实现Filter
+       - pre	-3	ServletDetectionFilter	标记处理Servlet的类型
+       - pre	-2	Servlet30WrapperFilter	包装HttpServletRequest请求
+       - pre	-1	FormBodyWrapperFilter	包装请求体
+       - route	1	DebugFilter	标记调试标志
+       - route	5	PreDecorationFilter	处理请求上下文供后续使用
+       - route	10	RibbonRoutingFilter	serviceId请求转发
+       - route	100	SimpleHostRoutingFilter	url请求转发
+       - route	500	SendForwardFilter	forward请求转发
+       - post	0	SendErrorFilter	处理有错误的请求响应
+       - post	1000	SendResponseFilter	处理正常的请求响应
+      + 自定义Filter 
+   + 路由熔断
+     - 处理服务请求异常情况
+     - 异常反馈前端请求处理
+     - Zuul 目前只支持服务级别的熔断，不支持具体到某个URL进行熔断。
 ### 功能实现
    1. 服务网关
       + 依赖spring-cloud-starter-zuul
@@ -187,5 +209,22 @@
       + 开启注解@EnableZuulProxy，支持网关路由
       + 加入服务
         - 访问路径：zuul.routes.api-a.path=/producer/**
-        - 服务转接：zuul.routes.api-a.serviceId=spring-cloud-producer
+        - 服务转接：zuul.routes.api-a.serviceId  =spring-cloud-producer
         - 服务注册地址eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/
+   2. Filter服务过滤
+      + 自定义Filter
+        - 继承ZuulFilter类，覆盖四个方法
+          - filterType 定义filter的类型，有pre、route、post、error四种  
+          - filterOrder 定义filter的顺序，数字越小表示顺序越高，越先执行
+          - shouldFilter 表示是否需要执行该filter，true表示执行，false表示不执行
+          - run filter需要执行的具体操作 
+        - 路由熔斷
+          - 定义类并且继承FallbackProvider 
+          - 对熔断事件响应的信息编写
+   3. 路由重试
+      + 添加Spring Retry依赖
+      + 配置文件中开启Zuul Retry
+        _ zuul.retryable=true  是否开启重试功能
+        - ribbon.MaxAutoRetries=2 对当前服务的重试次数
+        - ribbon.MaxAutoRetriesNextServer=0 切换相同Server的次数
+   4. Zuul高可用(不同的客戶端分配不同的zuul)

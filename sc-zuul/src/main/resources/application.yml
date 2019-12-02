@@ -15,7 +15,12 @@ zuul:
       serviceId: sc-ribbon
     feign:
       path: /feign/**
-        serviceId: sc-eurka-consumer
+      serviceId: sc-eurka-consumer
+  #是否开启重试功能
+  retryable: true
+ribbon:
+  MaxAutoRetries: 2
+  MaxAutoRetriesNextServer: 0
 eureka:
   client:
     serviceUrl:
