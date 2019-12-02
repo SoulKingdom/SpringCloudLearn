@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: service-zuul
+server:
+  port: 9013
+###这里的配置表示，访问/it/** 直接重定向到http://www.baidu.com/**
+zuul:
+  routes:
+    baidu:
+      path: /baidu/**
+      url: http://www.baidu.com/
+#指向对应服务
+    ribbon:
+      path: /ribbon/**
+      serviceId: sc-ribbon
+    feign:
+      path: /feign/**
+        serviceId: sc-eurka-consumer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9001/eureka/

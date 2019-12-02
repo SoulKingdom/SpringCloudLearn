@@ -169,3 +169,23 @@
      - /bus/refresh?destination=customers:**，这样就可以触发customers微服务所有实例的配置刷新。
      - 等
    5. 跟踪总线 /trace
+##Spring Cloud Zuul 
+### 介绍
+ Spring Cloud Zuul路由是微服务架构的不可或缺的一部分，提供动态路由，监控，弹性，安全等的边缘服务。  
+ Zuul是Netflix出品的一个基于JVM路由和服务端的负载均衡器。  
+ Zuul的主要功能是路由转发和过滤器。路由功能是微服务的一部分，比如／api/user转发到到user服务，/api/shop转发到到shop服务。zuul默认和Ribbon结合实现了负载均衡的功能。
+### 功能点
+   + 网关路由
+   + 服务化
+   + 网关默认路由规则：默认支持负载均衡、注册服务和转发服务
+### 功能实现
+   1. 服务网关
+      + 依赖spring-cloud-starter-zuul
+      + 配置文件
+        - 配置路径 zuul.routes.baidu.path=/baidu/**
+        - 重定向路径 zuul.routes.baidu.url=http://www.baidu.com/
+      + 开启注解@EnableZuulProxy，支持网关路由
+      + 加入服务
+        - 访问路径：zuul.routes.api-a.path=/producer/**
+        - 服务转接：zuul.routes.api-a.serviceId=spring-cloud-producer
+        - 服务注册地址eureka.client.serviceUrl.defaultZone=http://localhost:8000/eureka/

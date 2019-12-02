@@ -6,19 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="sc-eureka-server" />
-        <module name="sc-client-to" />
         <module name="sc-hystrix-dashboard-turbine" />
-        <module name="maste" />
-        <module name="sc-config-server" />
-        <module name="sc-config-client" />
         <module name="springcloud" />
-        <module name="sc-eureka-client" />
-        <module name="sc-eureka-server-to" />
-        <module name="sc-config-service-to" />
-        <module name="sc-eureka-consumer" />
         <module name="sc-config-client-to" />
         <module name="sc-ribbon" />
+        <module name="sc-config-server" />
+        <module name="sc-eureka-server-to" />
+        <module name="sc-config-service-to" />
+        <module name="sc-eureka-server" />
+        <module name="sc-eureka-client" />
+        <module name="sc-eureka-consumer" />
+        <module name="maste" />
+        <module name="sc-client-to" />
+        <module name="sc-zuul" />
+        <module name="sc-config-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -41,6 +42,7 @@
       <module name="sc-eureka-server-to" options="-parameters" />
       <module name="sc-hystrix-dashboard-turbine" options="-parameters" />
       <module name="sc-ribbon" options="-parameters" />
+      <module name="sc-zuul" options="-parameters" />
       <module name="springcloud" options="-parameters" />
     </option>
   </component>
