@@ -31,6 +31,7 @@
         <module>sc-config-client</module>
         <module>sc-config-client-to</module>
         <module>sc-zuul</module>
+        <module>sc-zipkin-server</module>
     </modules>
     <!--设置默认jdk、编码格式和云服务版本 start-->
     <properties>

@@ -21,6 +21,12 @@
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
         <!--eureka-server jar end-->
+        <!--项目添加zipkin支持-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <!--项目添加zipkin支持-->
         <!--单元测试引用jar包 start-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

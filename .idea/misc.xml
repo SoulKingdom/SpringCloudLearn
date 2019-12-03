@@ -16,6 +16,7 @@
         <option value="$PROJECT_DIR$/sc-config-service-to/pom.xml" />
         <option value="$PROJECT_DIR$/sc-config-client-to/pom.xml" />
         <option value="$PROJECT_DIR$/sc-zuul/pom.xml" />
+        <option value="$PROJECT_DIR$/sc-zipkin-server/pom.xml" />
       </list>
     </option>
   </component>

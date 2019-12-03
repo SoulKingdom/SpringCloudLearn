@@ -11,6 +11,8 @@
 -- sc-config-server(9010) Spring Cloud Config 配置中心
 -- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
 -- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
+-- sc-zuul（9013） Spring Cloud Zuul 网关，服务过滤，路由重试等功能  
+-- sc-zipkin-server Spring Cloud Sleuth 服务监控 
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -228,3 +230,24 @@
         - ribbon.MaxAutoRetries=2 对当前服务的重试次数
         - ribbon.MaxAutoRetriesNextServer=0 切换相同Server的次数
    4. Zuul高可用(不同的客戶端分配不同的zuul)
+## Spring Cloud Sleuth和Zipkin进行分布式链路跟踪
+### 介绍
+主要有三部分：数据收集、数据存储和数据展示
+### 功能点
+   + Span：基本工作单元，例如，在一个新建的span中发送一个RPC等同于发送一个回应请求给RPC，span通过一个64位ID唯一标识，trace以另一个64位ID表示，span还有其他数据信息，比如摘要、时间戳事件、关键值注释(tags)、span的ID、以及进度ID(通常是IP地址) span在不断的启动和停止，同时记录了时间信息，当你创建了一个span，你必须在未来的某个时刻停止它。  
+   + Trace：一系列spans组成的一个树状结构，例如，如果你正在跑一个分布式大数据工程，你可能需要创建一个trace。  
+   + Annotation：用来及时记录一个事件的存在，一些核心annotations用来定义一个请求的开始和结束
+     - cs - Client Sent -客户端发起一个请求，这个annotion描述了这个span的开始
+     - sr - Server Received -服务端获得请求并准备开始处理它，如果将其sr减去cs时间戳便可得到网络延迟
+     - ss - Server Sent -注解表明请求处理的完成(当请求返回客户端)，如果ss减去sr时间戳便可得到服务端需要的处理请求时间
+     - cr - Client Received -表明span的结束，客户端成功接收到服务端的回复，如果cr减去cs时间戳便可得到客户端从服务端获取回复的所有所需时间 将Span和Trace在一个系统中使用Zipkin注解的过程图形化：
+   
+### 功能实现
+   1. 建立zipkin-server服务
+     + 踩坑点：SpringBoot2.0之后，会报Class path contains multiple SLF4J bindings. 架包冲突错误
+       - 解决方式`<!--排除--><exclusions><exclusion><groupId>org.apache.logging.log4j</groupId>
+                  <artifactId>log4j-slf4j-impl</artifactId></exclusion></exclusions>`
+     + 踩坑点2：#zipkin启动报错无法访问的
+        - 解决方法：配置文件增加 management.metrics.web.server.auto-time-requests: false
+   2. 建立zipkin监控客户端 <artifactId>spring-cloud-starter-zipkin</artifactId>
+   3. 进行监控

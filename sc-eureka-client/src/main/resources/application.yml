@@ -5,6 +5,11 @@ spring:
   application:
     #服务对应名称
     name: sc-eurka-client
+  zipkin:
+    base-url: http://localhost:9014
+  sleuth:
+    sampler:
+      percentage: 1.0
 eureka:
   #服务层
   client:

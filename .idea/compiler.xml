@@ -9,15 +9,16 @@
         <module name="sc-hystrix-dashboard-turbine" />
         <module name="springcloud" />
         <module name="sc-config-client-to" />
-        <module name="sc-ribbon" />
+        <module name="sc-client-to" />
         <module name="sc-config-server" />
+        <module name="sc-ribbon" />
         <module name="sc-eureka-server-to" />
-        <module name="sc-config-service-to" />
+        <module name="maste" />
         <module name="sc-eureka-server" />
         <module name="sc-eureka-client" />
+        <module name="sc-config-service-to" />
         <module name="sc-eureka-consumer" />
-        <module name="maste" />
-        <module name="sc-client-to" />
+        <module name="sc-zipkin-server" />
         <module name="sc-zuul" />
         <module name="sc-config-client" />
       </profile>
@@ -42,6 +43,7 @@
       <module name="sc-eureka-server-to" options="-parameters" />
       <module name="sc-hystrix-dashboard-turbine" options="-parameters" />
       <module name="sc-ribbon" options="-parameters" />
+      <module name="sc-zipkin-server" options="-parameters" />
       <module name="sc-zuul" options="-parameters" />
       <module name="springcloud" options="-parameters" />
     </option>

@@ -5,6 +5,11 @@ spring:
   application:
     #服务对应名称
     name: sc-ribbon
+  zipkin:
+    base-url: http://localhost:9014
+  sleuth:
+    sampler:
+      percentage: 1.0
 eureka:
   client:
     #服务路径

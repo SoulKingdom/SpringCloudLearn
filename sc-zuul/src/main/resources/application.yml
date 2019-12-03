@@ -1,22 +1,27 @@
 spring:
   application:
     name: service-zuul
+  zipkin:
+    base-url: http://localhost:9014
+  sleuth:
+    sampler:
+      percentage: 1.0
 server:
   port: 9013
-###ÕâÀïµÄÅäÖÃ±íÊ¾£¬·ÃÎÊ/it/** Ö±½ÓÖØ¶¨Ïòµ½http://www.baidu.com/**
+###ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/it/** Ö±ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½http://www.baidu.com/**
 zuul:
   routes:
     baidu:
       path: /baidu/**
       url: http://www.baidu.com/
-#Ö¸Ïò¶ÔÓ¦·şÎñ
+#Ö¸ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
     ribbon:
       path: /ribbon/**
       serviceId: sc-ribbon
     feign:
       path: /feign/**
       serviceId: sc-eurka-consumer
-  #ÊÇ·ñ¿ªÆôÖØÊÔ¹¦ÄÜ
+  #ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½
   retryable: true
 ribbon:
   MaxAutoRetries: 2
