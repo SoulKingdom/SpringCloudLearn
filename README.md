@@ -12,7 +12,7 @@
 -- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
 -- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
 -- sc-zuul（9013） Spring Cloud Zuul 网关，服务过滤，路由重试等功能  
--- sc-zipkin-server Spring Cloud Sleuth 服务监控 
+-- sc-zipkin-server(9014) Spring Cloud Sleuth 服务监控 
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -251,3 +251,35 @@
         - 解决方法：配置文件增加 management.metrics.web.server.auto-time-requests: false
    2. 建立zipkin监控客户端 <artifactId>spring-cloud-starter-zipkin</artifactId>
    3. 进行监控
+ ### 关于consul与eureka区别
+ consul:一致性好，速度慢一点
+ eureka:可用性好，服务注册快一点
+ CAP定理：指的是在一个分布式系统中，Consistency（一致性）、 Availability（可用性）、Partition tolerance（分区容错性），三者不可同时获得。
+ 
+ 一致性（C）：在分布式系统中的所有数据备份，在同一时刻是否同样的值。（所有节点在同一时间的数据完全一致，越多节点，数据同步越耗时）
+ 
+ 可用性（A）：负载过大后，集群整体是否还能响应客户端的读写请求。（服务一直可用，而且是正常响应时间）
+ 
+ 分区容错性（P）：分区容忍性，就是高可用性，一个节点崩了，并不影响其它的节点（100个节点，挂了几个，不影响服务，越多机器越好）
+ CAP理论：
+ 就是说在分布式存储系统中，最多只能实现上面的两点。而由于当前的网络硬件肯定会出现延迟丢包等问题，所以分区容忍性是我们必须需要实现的。所以我们只能在一致性和可用性之间进行权衡  
+ ## Spring Cloud Gateway(代替zuul)  
+ ### 介绍
+  Spring Cloud Gateway 提供旅游,Filter,安全，监控/指标，和限流等；  
+  Gateway是简单有效的统一的 API 路由管理方式  
+### 功能点  
+  + Predicate 介绍
+    - 通过时间匹配
+    - 通过 Cookie 匹配
+    - 通过 Header 属性匹配
+    - 通过 Host 匹配
+    - 通过请求方式匹配
+    - 通过请求路径匹配
+    - 通过请求参数匹配
+    - 通过请求 ip 地址进行匹配
+    - 组合使用
+  + Filter(过滤器)高级功能
+ ### 功能实现
+   1. pom依赖
+   2. 定义转发配置
+      + yml文件转发路径配置 

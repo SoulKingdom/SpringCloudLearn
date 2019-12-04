@@ -13,11 +13,12 @@
         <module name="sc-config-server" />
         <module name="sc-ribbon" />
         <module name="sc-eureka-server-to" />
-        <module name="maste" />
+        <module name="sc-config-service-to" />
         <module name="sc-eureka-server" />
         <module name="sc-eureka-client" />
-        <module name="sc-config-service-to" />
         <module name="sc-eureka-consumer" />
+        <module name="maste" />
+        <module name="sc-api-gateway" />
         <module name="sc-zipkin-server" />
         <module name="sc-zuul" />
         <module name="sc-config-client" />
@@ -32,6 +33,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo" options="-parameters" />
       <module name="maste" options="-parameters" />
+      <module name="sc-api-gateway" options="-parameters" />
       <module name="sc-client-to" options="-parameters" />
       <module name="sc-config-client" options="-parameters" />
       <module name="sc-config-client-to" options="-parameters" />

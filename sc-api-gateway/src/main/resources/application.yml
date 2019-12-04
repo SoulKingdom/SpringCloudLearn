@@ -1,0 +1,43 @@
+server:
+  port: 9015
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      #路由转发
+      routes:
+        - id: sta_route
+          uri: http://www.ityouknow.com
+          predicates:
+            - Path=/spring-cloud
+        #cookie定义转发
+        - id: cookie_route
+          uri: http://www.baidu.com
+          predicates:
+            - Cookie=ityouknow, kee.e
+        # 内部服务
+        - id: service_id
+          uri: http://localhost:9008
+          filters:
+            - AddRequestParameter=foo, bar
+          predicates:
+            - Path=/ribbon/**
+            - Method=GET
+eureka:
+  #服务层
+  client:
+    #服务路径
+    serviceUrl:
+      #设置与Eureka Server交互的地址
+      #查询服务和注册服务都需要依赖这个地址。
+      #默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。
+      defaultZone: http://localhost:9001/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
