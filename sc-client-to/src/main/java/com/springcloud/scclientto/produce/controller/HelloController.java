@@ -29,4 +29,9 @@ public class HelloController {
         }
         return "hello " + name + "，this is second messge";
     }
+
+    @GetMapping(value = "/foo")
+    public String foo(@RequestParam(value = "foo", required = false) String foo) {
+        return "hello " + foo + "!";
+    }
 }

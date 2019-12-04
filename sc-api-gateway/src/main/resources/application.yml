@@ -22,11 +22,18 @@ spring:
             - Cookie=ityouknow, kee.e
         # 内部服务
         - id: service_id
-          uri: http://localhost:9008
+          uri: lb://sc-ribbon
           filters:
             - AddRequestParameter=foo, bar
           predicates:
             - Path=/ribbon/**
+            - Method=GET
+        - id: sc_client
+          uri: lb://sc-eurka-client
+          filters:
+            - AddRequestParameter=foo, bar
+          predicates:
+            - Path=/test/**
             - Method=GET
 eureka:
   #服务层

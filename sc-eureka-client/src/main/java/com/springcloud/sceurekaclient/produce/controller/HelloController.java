@@ -15,4 +15,9 @@ public class HelloController {
     public String index(@RequestParam String name) {
         return "hello " + name + "，this is first messge";
     }
+
+    @GetMapping(value = "/foo")
+    public String foo(@RequestParam(value = "foo", required = false) String foo) {
+        return "hello " + foo + "!!";
+    }
 }
