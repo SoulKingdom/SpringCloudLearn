@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: api-gateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
   cloud:
     gateway:
       discovery:
@@ -25,6 +29,11 @@ spring:
           uri: lb://sc-ribbon
           filters:
             - AddRequestParameter=foo, bar
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+                key-resolver: "#{@userKeyResolver}"
           predicates:
             - Path=/ribbon/**
             - Method=GET
@@ -32,6 +41,8 @@ spring:
           uri: lb://sc-eurka-client
           filters:
             - AddRequestParameter=foo, bar
+            # 过滤掉-Path中去掉1个字符串 /name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo。
+            - StripPrefix=1
           predicates:
             - Path=/test/**
             - Method=GET

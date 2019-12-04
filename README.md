@@ -289,9 +289,20 @@
       + yml文件转发路径配置 
    3. 遇到的注意点:
       - 在配置中predicates的- Path的路径匹配信息，一定要与调用的服务之前名称一致 
-        - 可以通过配置StripPrefix 属性,修改请求路径
+        - 可以通过配置StripPrefix 属性,修改请求路径 
+          - - StripPrefix=1 过滤掉-Path中去掉1个字符串 /name/bar/foo后端匹配到的请求路径就会变成http://nameservice/foo。
+          - PrefixPath Filter 是在 URL 路径前面添加一部分的前缀                                                
   #### 扩展功能
    + 熔断  
+   
    + 限流
+     - 采用redis进行限速
+     - 增加redis架包   
+     - 增加网关限流配置
+       - filter 名称必须是 RequestRateLimiter
+       - redis-rate-limiter.replenishRate：允许用户每秒处理多少个请求
+       - redis-rate-limiter.burstCapacity：令牌桶的容量，允许在一秒钟内完成的最大请求数
+       - key-resolver：使用 SpEL 按名称引用 bean
+     - 设置限流策略 创建Config类
    + 重试
      
