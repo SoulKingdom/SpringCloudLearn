@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springcloud.sczuul.log.dao.OperationLogMapper" >
+  <resultMap id="BaseResultMap" type="com.springcloud.sczuul.log.entity.OperationLog" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="opera_code" property="operaCode" jdbcType="VARCHAR" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="method" property="method" jdbcType="VARCHAR" />
+    <result column="operationTime" property="operationtime" jdbcType="DATE" />
+    <result column="station" property="station" jdbcType="VARCHAR" />
+    <result column="station_Code" property="stationCode" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_acnt" property="userAcnt" jdbcType="VARCHAR" />
+    <result column="source_type" property="sourceType" jdbcType="VARCHAR" />
+    <result column="source_application" property="sourceApplication" jdbcType="VARCHAR" />
+    <result column="source_public_ip" property="sourcePublicIp" jdbcType="VARCHAR" />
+    <result column="source_private_ip" property="sourcePrivateIp" jdbcType="VARCHAR" />
+    <result column="source_vpn_ip" property="sourceVpnIp" jdbcType="VARCHAR" />
+    <result column="source_mac" property="sourceMac" jdbcType="VARCHAR" />
+    <result column="target_application" property="targetApplication" jdbcType="VARCHAR" />
+    <result column="target_public_ip" property="targetPublicIp" jdbcType="VARCHAR" />
+    <result column="target_private_ip" property="targetPrivateIp" jdbcType="VARCHAR" />
+    <result column="operation_type" property="operationType" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="mail_no" property="mailNo" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="association_number" property="associationNumber" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="delFlag" property="delflag" jdbcType="VARCHAR" />
+    <result column="sortNo" property="sortno" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="VARCHAR" />
+    <result column="last_modified_by" property="lastModifiedBy" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, opera_code, app_id, method, operationTime, station, station_Code, province, city, 
+    user_id, user_name, user_acnt, source_type, source_application, source_public_ip, 
+    source_private_ip, source_vpn_ip, source_mac, target_application, target_public_ip, 
+    target_private_ip, operation_type, result, reason, content, mail_no, order_id, association_number, 
+    email, feature, delFlag, sortNo, gmt_create, create_by, gmt_modified, last_modified_by, 
+    version
+  </sql>
+ <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from operation_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from operation_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>-->
+  <!--<insert id="insert" parameterType="com.springcloud.sczuul.log.entity.OperationLog" >
+    insert into operation_log (id, opera_code, app_id, 
+      method, operationTime, station, 
+      station_Code, province, city, 
+      user_id, user_name, user_acnt, 
+      source_type, source_application, source_public_ip, 
+      source_private_ip, source_vpn_ip, source_mac, 
+      target_application, target_public_ip, target_private_ip, 
+      operation_type, result, reason, 
+      content, mail_no, order_id, 
+      association_number, email, feature, 
+      delFlag, sortNo, gmt_create, 
+      create_by, gmt_modified, last_modified_by, 
+      version)
+    values (#{id,jdbcType=VARCHAR}, #{operaCode,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, 
+      #{method,jdbcType=VARCHAR}, #{operationtime,jdbcType=DATE}, #{station,jdbcType=VARCHAR}, 
+      #{stationCode,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userAcnt,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=VARCHAR}, #{sourceApplication,jdbcType=VARCHAR}, #{sourcePublicIp,jdbcType=VARCHAR}, 
+      #{sourcePrivateIp,jdbcType=VARCHAR}, #{sourceVpnIp,jdbcType=VARCHAR}, #{sourceMac,jdbcType=VARCHAR}, 
+      #{targetApplication,jdbcType=VARCHAR}, #{targetPublicIp,jdbcType=VARCHAR}, #{targetPrivateIp,jdbcType=VARCHAR}, 
+      #{operationType,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{mailNo,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{associationNumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, 
+      #{delflag,jdbcType=VARCHAR}, #{sortno,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{gmtModified,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=VARCHAR}, 
+      #{version,jdbcType=VARCHAR})
+  </insert>-->
+  <insert id="insertByMap" parameterType="com.springcloud.sczuul.log.entity.OperationLog" >
+    insert into operation_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        id,
+      <if test="operaCode != null" >
+        opera_code,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="operationtime != null" >
+        operationTime,
+      </if>
+      <if test="station != null" >
+        station,
+      </if>
+      <if test="stationCode != null" >
+        station_Code,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userAcnt != null" >
+        user_acnt,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="sourceApplication != null" >
+        source_application,
+      </if>
+      <if test="sourcePublicIp != null" >
+        source_public_ip,
+      </if>
+      <if test="sourcePrivateIp != null" >
+        source_private_ip,
+      </if>
+      <if test="sourceVpnIp != null" >
+        source_vpn_ip,
+      </if>
+      <if test="sourceMac != null" >
+        source_mac,
+      </if>
+      <if test="targetApplication != null" >
+        target_application,
+      </if>
+      <if test="targetPublicIp != null" >
+        target_public_ip,
+      </if>
+      <if test="targetPrivateIp != null" >
+        target_private_ip,
+      </if>
+      <if test="operationType != null" >
+        operation_type,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="mailNo != null" >
+        mail_no,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="associationNumber != null" >
+        association_number,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="feature != null" >
+        feature,
+      </if>
+      <if test="delflag != null" >
+        delFlag,
+      </if>
+      <if test="sortno != null" >
+        sortNo,
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified,
+      </if>
+      <if test="lastModifiedBy != null" >
+        last_modified_by,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+        UUID(),
+      <if test="operaCode != null" >
+        #{operaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="operationtime != null" >
+        #{operationtime,jdbcType=DATE},
+      </if>
+      <if test="station != null" >
+        #{station,jdbcType=VARCHAR},
+      </if>
+      <if test="stationCode != null" >
+        #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAcnt != null" >
+        #{userAcnt,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceApplication != null" >
+        #{sourceApplication,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePublicIp != null" >
+        #{sourcePublicIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePrivateIp != null" >
+        #{sourcePrivateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceVpnIp != null" >
+        #{sourceVpnIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceMac != null" >
+        #{sourceMac,jdbcType=VARCHAR},
+      </if>
+      <if test="targetApplication != null" >
+        #{targetApplication,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPublicIp != null" >
+        #{targetPublicIp,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPrivateIp != null" >
+        #{targetPrivateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNo != null" >
+        #{mailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="associationNumber != null" >
+        #{associationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null" >
+        #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="sortno != null" >
+        #{sortno,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        #{gmtCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null" >
+        #{gmtModified,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByMap" parameterType="com.springcloud.sczuul.log.entity.OperationLog" >
+    update operation_log
+    <set >
+      <if test="operaCode != null" >
+        opera_code = #{operaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null" >
+        method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="operationtime != null" >
+        operationTime = #{operationtime,jdbcType=DATE},
+      </if>
+      <if test="station != null" >
+        station = #{station,jdbcType=VARCHAR},
+      </if>
+      <if test="stationCode != null" >
+        station_Code = #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAcnt != null" >
+        user_acnt = #{userAcnt,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null" >
+        source_type = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceApplication != null" >
+        source_application = #{sourceApplication,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePublicIp != null" >
+        source_public_ip = #{sourcePublicIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcePrivateIp != null" >
+        source_private_ip = #{sourcePrivateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceVpnIp != null" >
+        source_vpn_ip = #{sourceVpnIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceMac != null" >
+        source_mac = #{sourceMac,jdbcType=VARCHAR},
+      </if>
+      <if test="targetApplication != null" >
+        target_application = #{targetApplication,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPublicIp != null" >
+        target_public_ip = #{targetPublicIp,jdbcType=VARCHAR},
+      </if>
+      <if test="targetPrivateIp != null" >
+        target_private_ip = #{targetPrivateIp,jdbcType=VARCHAR},
+      </if>
+      <if test="operationType != null" >
+        operation_type = #{operationType,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="mailNo != null" >
+        mail_no = #{mailNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="associationNumber != null" >
+        association_number = #{associationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="feature != null" >
+        feature = #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="delflag != null" >
+        delFlag = #{delflag,jdbcType=VARCHAR},
+      </if>
+      <if test="sortno != null" >
+        sortNo = #{sortno,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null" >
+        gmt_create = #{gmtCreate,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtModified != null" >
+        gmt_modified = #{gmtModified,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        last_modified_by = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

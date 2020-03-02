@@ -20,4 +20,8 @@ public class HelloController {
     public String foo(@RequestParam(value = "foo", required = false) String foo) {
         return "hello " + foo + "!!";
     }
+    @GetMapping(value = "/addAopExternal")
+    public String aopExternal() {
+        return "hello !!";
+    }
 }

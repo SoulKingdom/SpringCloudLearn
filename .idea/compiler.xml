@@ -10,14 +10,15 @@
         <module name="springcloud" />
         <module name="sc-config-client-to" />
         <module name="sc-client-to" />
+        <module name="sc-security" />
         <module name="sc-config-server" />
+        <module name="aop" />
         <module name="sc-ribbon" />
         <module name="sc-eureka-server-to" />
         <module name="sc-config-service-to" />
         <module name="sc-eureka-server" />
         <module name="sc-eureka-client" />
         <module name="sc-eureka-consumer" />
-        <module name="maste" />
         <module name="sc-api-gateway" />
         <module name="sc-zipkin-server" />
         <module name="sc-zuul" />
@@ -31,6 +32,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="aop" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="maste" options="-parameters" />
       <module name="sc-api-gateway" options="-parameters" />
@@ -45,6 +47,7 @@
       <module name="sc-eureka-server-to" options="-parameters" />
       <module name="sc-hystrix-dashboard-turbine" options="-parameters" />
       <module name="sc-ribbon" options="-parameters" />
+      <module name="sc-security" options="-parameters" />
       <module name="sc-zipkin-server" options="-parameters" />
       <module name="sc-zuul" options="-parameters" />
       <module name="springcloud" options="-parameters" />

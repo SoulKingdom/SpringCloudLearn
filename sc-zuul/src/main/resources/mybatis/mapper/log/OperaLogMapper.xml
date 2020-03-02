@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springcloud.sczuul.log.dao.OperaLogDao" >
+  <resultMap id="BaseResultMap" type="com.springcloud.sczuul.log.entity.OperaLogDO" >
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="sort_no" property="sortNo" jdbcType="INTEGER" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="last_modified_by" property="lastModifiedBy" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.springcloud.sczuul.log.entity.OperaLogDO" extends="BaseResultMap" >
+    <result column="id" property="id" jdbcType="VARBINARY" />
+    <result column="opera_code" property="operaCode" jdbcType="VARBINARY" />
+    <result column="method" property="method" jdbcType="VARBINARY" />
+    <result column="user_code" property="userCode" jdbcType="VARBINARY" />
+    <result column="user_name" property="userName" jdbcType="VARBINARY" />
+    <result column="app_id" property="appId" jdbcType="VARBINARY" />
+    <result column="source_type" property="sourceType" jdbcType="VARBINARY" />
+    <result column="source_application" property="sourceApplication" jdbcType="VARBINARY" />
+    <result column="operation_time" property="operationTime" jdbcType="VARBINARY" />
+    <result column="province" property="province" jdbcType="VARBINARY" />
+    <result column="city" property="city" jdbcType="VARBINARY" />
+    <result column="source_public_ip" property="sourcePublicIp" jdbcType="VARBINARY" />
+    <result column="source_private_ip" property="sourcePrivateIp" jdbcType="VARBINARY" />
+    <result column="VPN" property="vpn" jdbcType="VARBINARY" />
+    <result column="source_mac" property="sourceMac" jdbcType="VARBINARY" />
+    <result column="target_application" property="targetApplication" jdbcType="VARBINARY" />
+    <result column="target_public_ip" property="targetPublicIp" jdbcType="VARBINARY" />
+    <result column="target_private_ip" property="targetPrivateIp" jdbcType="VARBINARY" />
+    <result column="operation_type" property="operationType" jdbcType="VARBINARY" />
+    <result column="result" property="result" jdbcType="VARBINARY" />
+    <result column="reason" property="reason" jdbcType="VARBINARY" />
+    <result column="content" property="content" jdbcType="VARBINARY" />
+    <result column="email" property="email" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    id, opera_code, method, user_code, user_name, app_id, source_type, source_application, 
+    operation_time, province, city, source_public_ip, source_private_ip, VPN, source_mac, 
+    target_application, target_public_ip, target_private_ip, operation_type, result, 
+    reason, content, email
+  </sql>
+  <insert id="insert" parameterType="com.springcloud.sczuul.log.entity.OperaLogDO" >
+    insert into t_opera_log (is_deleted, sort_no, gmt_create, 
+      create_by, gmt_modified, last_modified_by, 
+      version, id, opera_code, 
+      method, user_code, user_name, 
+      app_id, source_type, source_application, 
+      operation_time, province, city, 
+      source_public_ip, source_private_ip, VPN, 
+      source_mac, target_application, target_public_ip, 
+      target_private_ip, operation_type, result, 
+      reason, content, email
+      )
+    values (#{isDeleted,jdbcType=BIT}, #{sortNo,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{gmtModified,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER}, #{id,jdbcType=VARBINARY}, #{operaCode,jdbcType=VARBINARY}, 
+      #{method,jdbcType=VARBINARY}, #{userCode,jdbcType=VARBINARY}, #{userName,jdbcType=VARBINARY}, 
+      #{appId,jdbcType=VARBINARY}, #{sourceType,jdbcType=VARBINARY}, #{sourceApplication,jdbcType=VARBINARY}, 
+      #{operationTime,jdbcType=VARBINARY}, #{province,jdbcType=VARBINARY}, #{city,jdbcType=VARBINARY}, 
+      #{sourcePublicIp,jdbcType=VARBINARY}, #{sourcePrivateIp,jdbcType=VARBINARY}, #{vpn,jdbcType=VARBINARY}, 
+      #{sourceMac,jdbcType=VARBINARY}, #{targetApplication,jdbcType=VARBINARY}, #{targetPublicIp,jdbcType=VARBINARY}, 
+      #{targetPrivateIp,jdbcType=VARBINARY}, #{operationType,jdbcType=VARBINARY}, #{result,jdbcType=VARBINARY}, 
+      #{reason,jdbcType=VARBINARY}, #{content,jdbcType=VARBINARY}, #{email,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springcloud.sczuul.log.entity.OperaLogDO" >
+    insert into t_opera_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        is_deleted,
+        sort_no,
+        gmt_create,
+      <if test="createBy != null" >
+        create_by,
+      </if>
+        gmt_modified,
+      <if test="lastModifiedBy != null" >
+        last_modified_by,
+      </if>
+        version,
+        id,
+      <if test="operaCode != null" >
+        opera_code,
+      </if>
+      <if test="method != null" >
+        method,
+      </if>
+      <if test="userCode != null" >
+        user_code,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="sourceApplication != null" >
+        source_application,
+      </if>
+      <if test="operationTime != null" >
+        operation_time,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="sourcePublicIp != null" >
+        source_public_ip,
+      </if>
+      <if test="sourcePrivateIp != null" >
+        source_private_ip,
+      </if>
+      <if test="vpn != null" >
+        VPN,
+      </if>
+      <if test="sourceMac != null" >
+        source_mac,
+      </if>
+      <if test="targetApplication != null" >
+        target_application,
+      </if>
+      <if test="targetPublicIp != null" >
+        target_public_ip,
+      </if>
+      <if test="targetPrivateIp != null" >
+        target_private_ip,
+      </if>
+      <if test="operationType != null" >
+        operation_type,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+        0,
+        0,
+        now(),
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+       now(),
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+        0,
+       UUID(),
+      <if test="operaCode != null" >
+        #{operaCode,jdbcType=VARBINARY},
+      </if>
+      <if test="method != null" >
+        #{method,jdbcType=VARBINARY},
+      </if>
+      <if test="userCode != null" >
+        #{userCode,jdbcType=VARBINARY},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARBINARY},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARBINARY},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARBINARY},
+      </if>
+      <if test="sourceApplication != null" >
+        #{sourceApplication,jdbcType=VARBINARY},
+      </if>
+      <if test="operationTime != null" >
+        #{operationTime,jdbcType=VARBINARY},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARBINARY},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARBINARY},
+      </if>
+      <if test="sourcePublicIp != null" >
+        #{sourcePublicIp,jdbcType=VARBINARY},
+      </if>
+      <if test="sourcePrivateIp != null" >
+        #{sourcePrivateIp,jdbcType=VARBINARY},
+      </if>
+      <if test="vpn != null" >
+        #{vpn,jdbcType=VARBINARY},
+      </if>
+      <if test="sourceMac != null" >
+        #{sourceMac,jdbcType=VARBINARY},
+      </if>
+      <if test="targetApplication != null" >
+        #{targetApplication,jdbcType=VARBINARY},
+      </if>
+      <if test="targetPublicIp != null" >
+        #{targetPublicIp,jdbcType=VARBINARY},
+      </if>
+      <if test="targetPrivateIp != null" >
+        #{targetPrivateIp,jdbcType=VARBINARY},
+      </if>
+      <if test="operationType != null" >
+        #{operationType,jdbcType=VARBINARY},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARBINARY},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARBINARY},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARBINARY},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

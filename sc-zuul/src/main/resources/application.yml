@@ -6,11 +6,23 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+  datasource:
+    name: dataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/log?useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: root
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
 server:
   port: 9013
 ###��������ñ�ʾ������/it/** ֱ���ض���http://www.baidu.com/**
 zuul:
   routes:
+    client:
+      path: /client/**
+      serviceId: sc-eurka-client
     baidu:
       path: /baidu/**
       url: http://www.baidu.com/

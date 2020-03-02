@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springcloud.sczuul.aopproj.dao.LogClient">
+	
+	<insert id="logsToDb" >
+	INSERT INTO T_SYS_LOG
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="title != null">
+			TITLE,
+		</if>
+		<if test="remoteAddr != null">
+			REMOTE_ADDR,
+		</if>
+		<if test="requestUri != null">
+			REQUEST_URI,
+		</if>
+		<if test="method != null">
+			METHOD,
+		</if>
+		<if test="userCode != null">
+			USER_CODE,
+		</if>
+		<if test="userName != null">
+			USER_NAME,
+		</if>
+		<if test="deptCode != null">
+			DEPT_CODE,
+		</if>
+		<if test="deptName != null">
+			DEPT_NAME,
+		</if>
+		<if test="exception != null">
+			EXCEPTION,
+		</if>
+		<if test="userAgent != null">
+			USER_AGENT,
+		</if>
+		<if test="type != null">
+			TYPE,
+		</if>
+		<if test="gmtCreate != null">
+			GMT_CREATE,
+		</if>
+		<if test="params != null">
+            PARAMS,
+        </if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="title != null">
+			#{title,jdbcType=VARCHAR},
+		</if>
+		<if test="remoteAddr != null">
+			#{remoteAddr,jdbcType=VARCHAR},
+		</if>
+		<if test="requestUri != null">
+			#{requestUri,jdbcType=CHAR},
+		</if>
+		<if test="method != null">
+			#{method,jdbcType=VARCHAR},
+		</if>
+		<if test="userCode != null">
+			#{userCode,jdbcType=VARCHAR},
+		</if>
+		<if test="userName != null">
+			#{userName,jdbcType=VARCHAR},
+		</if>
+		<if test="deptCode != null">
+			#{deptCode,jdbcType=VARCHAR},
+		</if>
+		<if test="deptName != null">
+			#{deptName,jdbcType=VARCHAR},
+		</if>
+		<if test="exception != null">
+			#{exception,jdbcType=VARCHAR},
+		</if>
+		<if test="userAgent != null">
+			#{userAgent,jdbcType=VARCHAR},
+		</if>
+		<if test="type != null">
+			#{type,jdbcType=VARCHAR},
+		</if>
+		<if test="gmtCreate != null">
+			#{gmtCreate,jdbcType=TIMESTAMP},
+		</if>
+		<if test="params != null">
+            #{params,jdbcType=VARCHAR},
+        </if>
+	</trim>
+</insert>
+	<select id="findLogList" parameterType="map" resultType="map">
+		SELECT
+		T.TITLE,
+		T.PARAMS,
+		T.REMOTE_ADDR,
+		T.REQUEST_URI,
+		T.METHOD,
+		D.USER_NAME,
+		P.DEPT_NAME,
+		T.EXCEPTION,
+		T.USER_AGENT,
+		T.TYPE,
+		DATE_FORMAT(T.GMT_CREATE,'%Y-%m-%d') GMT_CREATE
+		FROM T_SYS_LOG T
+		LEFT
+		JOIN T_SYS_USER D ON T.USER_CODE = D.USER_CODE
+		LEFT JOIN T_SYS_DEPT P
+		ON D.DEPT_CODE = P.DEPT_CODE
+		WHERE 1=1
+		<if test="END_TIME != null and END_TIME !=''">
+			AND DATE_FORMAT(T.GMT_CREATE,'%Y-%m-%d') &lt;= #{END_TIME}
+		</if>
+		<if test="START_TIME != null and START_TIME !=''">
+			AND DATE_FORMAT(T.GMT_CREATE,'%Y-%m-%d') &gt;=
+			#{START_TIME}
+		</if>
+		<if test="USER_NAME != null and USER_NAME !=''">
+			AND D.USER_NAME LIKE CONCAT('%',#{USER_NAME},'%')
+		</if>
+		<if test="TITLE != null and TITLE !=''">
+			AND T.TITLE LIKE CONCAT('%',#{TITLE},'%')
+		</if>
+	</select>
+</mapper>

@@ -9,6 +9,8 @@
     <version>2.2.1.RELEASE</version>
     <!--创建项目对应名称和描述-->
     <name>sc-f-master</name>
+    <!--打包类型-->
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
     <!--SpringBoot jar包文件-->
     <parent>
@@ -33,6 +35,8 @@
         <module>sc-zuul</module>
         <module>sc-zipkin-server</module>
         <module>sc-api-gateway</module>
+        <module>sc-security</module>
+        <module>aop</module>
     </modules>
     <!--设置默认jdk、编码格式和云服务版本 start-->
     <properties>

@@ -19,7 +19,7 @@ import java.io.InputStream;
  *  @author HaoXin.Liu
  *  @date 2019/12/2 14:56
  **/
-@Component
+//@Component
 public class TokenFailback implements FallbackProvider {
     private final Logger logger = LoggerFactory.getLogger(TokenFailback.class);
     @Override

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  *  @author HaoXin.Liu
  *  @date 2019/12/2 11:16
  **/
-@Component
+//@Component
 public class TokenFilter extends ZuulFilter {
     private final Logger logger = LoggerFactory.getLogger(TokenFilter.class);
     @Override
