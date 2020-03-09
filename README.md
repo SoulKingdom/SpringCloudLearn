@@ -13,6 +13,7 @@
 -- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
 -- sc-zuul（9013） Spring Cloud Zuul 网关，服务过滤，路由重试等功能  
 -- sc-zipkin-server(9014) Spring Cloud Sleuth 服务监控 
+-- sc-common Spring Cloud common 服务基础操作
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -305,4 +306,5 @@
        - key-resolver：使用 SpEL 按名称引用 bean
      - 设置限流策略 创建Config类
    + 重试
+   #### 创建基础功能模块
      

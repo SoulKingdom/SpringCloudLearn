@@ -2,7 +2,6 @@ package com.springcloud.sczuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
 import com.springcloud.sczuul.constant.GlobalConstant;
 import com.springcloud.sczuul.constant.OpearConstant;
 import com.springcloud.sczuul.log.entity.OperaLogDO;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,40 +42,35 @@ public class LogFilter extends ZuulFilter {
     }
 
     @Override
-    public Object run() throws ZuulException {
+    public Object run() {
         log.info("日志记录操作");
-        /* try {*/
-        //获取前端请求的具体参数
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
-        HttpServletResponse response = ctx.getResponse();
-        Map<String, String> maps = new HashMap<>(3);
-        maps.put("USER_CODE", "001");
-        maps.put("USER_NAME", "lhx");
-        request.getSession().setAttribute("LOGIN_USER", maps);
-        //获取对应参数
-        String params = request.getParameter("data");
-        //操作日志
-        String operationType = getControllerMethodType(request);
-        //判断你链接是否需要继续操作类型
-        if ("".equals(operationType.trim())) {
+        try {
+            //获取前端请求的具体参数
+            RequestContext ctx = RequestContext.getCurrentContext();
+            HttpServletRequest request = ctx.getRequest();
+            //获取对应参数
+            String params = request.getParameter("data");
+            //操作日志
+            String operationType = getControllerMethodType(request);
+            //判断你链接是否需要继续操作类型
+            if ("".equals(operationType.trim())) {
+                return null;
+            }
+            //把前端获取的数据放入map中
+            Map<String, String> map = new HashMap<>();
+            map.put("params", params);
+            map.put("operationType", operationType);
+            OperaLogDO oper = new OperaLogDO();
+            oper.setMethod(GlobalConstant.METHODOPERA);
+            //操作信息
+            LogUtil.operAspect(request, null, map, oper);
             return null;
-        }
-        //把前端获取的数据放入map中
-        Map<String, String> map = new HashMap<>();
-        map.put("params", params);
-        map.put("operationType", operationType);
-        OperaLogDO oper = new OperaLogDO();
-        oper.setMethod(GlobalConstant.METHODOPERA);
-        //操作信息
-        LogUtil.operAspect(request, null, map, oper);
-        return null;
-        /*} catch (Exception e) {
+        } catch (Exception e) {
             // 记录本地异常日志
             log.error("==前置通知异常==");
             log.error("LogRecode IO异常", e);
         }
-        return null;*/
+        return null;
     }
 
 
