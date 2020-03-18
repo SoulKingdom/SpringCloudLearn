@@ -19,7 +19,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Table structure for operation_log
 -- ----------------------------
 DROP TABLE IF EXISTS `t_sys_opera_log`;
-CREATE TABLE `operation_log` (
+CREATE TABLE `t_sys_opera_log` (
                                  `id` varchar(256) NOT NULL,
                                  `opera_code` varchar(255) DEFAULT NULL,
                                  `app_id` varchar(36) DEFAULT NULL,

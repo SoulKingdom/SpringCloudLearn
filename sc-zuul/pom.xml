@@ -63,6 +63,12 @@
             <scope>runtime</scope>
         </dependency>
         <!--mysql需要jar包 end-->
+        <dependency>
+            <groupId>com.springcloud</groupId>
+            <artifactId>sc-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>

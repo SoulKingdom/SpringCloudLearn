@@ -1,12 +1,13 @@
-package com.springcloud.sczuul.log.entity;
+package com.neusoft.gateway.log.entity;
+
 /**
-  * 操作日志DO
-  *
-  * @dept 上海软件研发中心
-  * @author HaoXin.Liu
-  * @date 2020/3/9 20:51
-  **/
-public class OperaLogDO {
+ * 操作日志数据处理
+ *
+ * @dept 上海软件研发中心
+ * @author HaoXin.Liu
+ * @date 2020/3/9 20:52
+ **/
+public class OperaLogDTO {
     private String id;
 
     private String operaCode;
@@ -16,8 +17,6 @@ public class OperaLogDO {
     private String userCode;
 
     private String userName;
-
-    private String url;
 
     private String appId;
 
@@ -38,20 +37,6 @@ public class OperaLogDO {
     private String reason;
 
     private String content;
-
-    private Boolean isDeleted;
-
-    private Integer sortNo;
-
-    private String gmtCreate;
-
-    private String createBy;
-
-    private String gmtModified;
-
-    private String lastModifiedBy;
-
-    private Integer version;
 
     public String getId() {
         return id;
@@ -125,29 +110,12 @@ public class OperaLogDO {
         this.operationTime = operationTime;
     }
 
-
     public String getSourcePublicIp() {
         return sourcePublicIp;
     }
 
     public void setSourcePublicIp(String sourcePublicIp) {
         this.sourcePublicIp = sourcePublicIp;
-    }
-
-    public String getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(String gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public String getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(String gmtModified) {
-        this.gmtModified = gmtModified;
     }
 
     public String getSourcePrivateIp() {
@@ -190,56 +158,14 @@ public class OperaLogDO {
         this.content = content;
     }
 
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
-    }
-
-    public Boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
-    public Integer getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(Integer sortNo) {
-        this.sortNo = sortNo;
-    }
-
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
-    }
-
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy == null ? null : lastModifiedBy.trim();
-    }
-
     @Override
     public String toString() {
-        return "OperaLogDO{" +
+        return "OperaLogDTO{" +
                 "id='" + id + '\'' +
                 ", operaCode='" + operaCode + '\'' +
                 ", method='" + method + '\'' +
                 ", userCode='" + userCode + '\'' +
                 ", userName='" + userName + '\'' +
-                ", url='" + url + '\'' +
                 ", appId='" + appId + '\'' +
                 ", sourceType='" + sourceType + '\'' +
                 ", sourceApplication='" + sourceApplication + '\'' +
@@ -250,21 +176,6 @@ public class OperaLogDO {
                 ", result='" + result + '\'' +
                 ", reason='" + reason + '\'' +
                 ", content='" + content + '\'' +
-                ", isDeleted=" + isDeleted +
-                ", sortNo=" + sortNo +
-                ", gmtCreate='" + gmtCreate + '\'' +
-                ", createBy='" + createBy + '\'' +
-                ", gmtModified='" + gmtModified + '\'' +
-                ", lastModifiedBy='" + lastModifiedBy + '\'' +
-                ", version=" + version +
                 '}';
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
     }
 }

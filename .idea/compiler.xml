@@ -7,7 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="sc-hystrix-dashboard-turbine" />
+        <module name="sc-base" />
         <module name="springcloud" />
+        <module name="sc-core" />
         <module name="sc-config-client-to" />
         <module name="sc-client-to" />
         <module name="sc-security" />
@@ -19,6 +21,8 @@
         <module name="sc-eureka-client" />
         <module name="sc-eureka-consumer" />
         <module name="sc-api-gateway" />
+        <module name="common" />
+        <module name="sc-util" />
         <module name="sc-zipkin-server" />
         <module name="sc-zuul" />
         <module name="sc-config-client" />
@@ -26,10 +30,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="aop" target="1.8" />
-      <module name="common" target="1.8" />
+      <module name="core" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="sc-common" target="1.8" />
-      <module name="sc-util" target="1.8" />
       <module name="springcloud" target="1.8" />
       <module name="util" target="1.8" />
     </bytecodeTargetLevel>
@@ -38,15 +41,18 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="aop" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="core" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="maste" options="-parameters" />
       <module name="sc-api-gateway" options="-parameters" />
+      <module name="sc-base" options="-parameters" />
       <module name="sc-client-to" options="-parameters" />
       <module name="sc-common" options="-parameters" />
       <module name="sc-config-client" options="-parameters" />
       <module name="sc-config-client-to" options="-parameters" />
       <module name="sc-config-server" options="-parameters" />
       <module name="sc-config-service-to" options="-parameters" />
+      <module name="sc-core" options="-parameters" />
       <module name="sc-eureka-client" options="-parameters" />
       <module name="sc-eureka-consumer" options="-parameters" />
       <module name="sc-eureka-server" options="-parameters" />

@@ -20,16 +20,11 @@
         <option value="$PROJECT_DIR$/sc-api-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/sc-security/pom.xml" />
         <option value="$PROJECT_DIR$/sd-util/pom.xml" />
-        <option value="$PROJECT_DIR$/sc-common/pom.xml" />
         <option value="$PROJECT_DIR$/sc-common/sc-util/pom.xml" />
-      </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/sc-common/sc-base/pom.xml" />
         <option value="$PROJECT_DIR$/sc-common/pom.xml" />
-        <option value="$PROJECT_DIR$/sc-common/sd-util/pom.xml" />
-      </set>
+        <option value="$PROJECT_DIR$/sc-common/sc-core/pom.xml" />
+      </list>
     </option>
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">

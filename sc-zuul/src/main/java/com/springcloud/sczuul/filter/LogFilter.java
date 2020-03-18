@@ -3,14 +3,15 @@ package com.springcloud.sczuul.filter;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.springcloud.sczuul.constant.GlobalConstant;
-import com.springcloud.sczuul.constant.OpearConstant;
-import com.springcloud.sczuul.log.entity.OperaLogDO;
+import com.springcloud.sczuul.constant.OperaConstant;
 import com.springcloud.sczuul.util.LogUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  *  @author HaoXin.Liu
  *  @date 2020/2/26 17:52
  **/
+@Order()
 @Component
 public class LogFilter extends ZuulFilter {
     public static final Logger log = LoggerFactory.getLogger(LogFilter.class);
@@ -48,6 +50,7 @@ public class LogFilter extends ZuulFilter {
             //获取前端请求的具体参数
             RequestContext ctx = RequestContext.getCurrentContext();
             HttpServletRequest request = ctx.getRequest();
+            HttpServletResponse response = ctx.getResponse();
             //获取对应参数
             String params = request.getParameter("data");
             //操作日志
@@ -57,13 +60,11 @@ public class LogFilter extends ZuulFilter {
                 return null;
             }
             //把前端获取的数据放入map中
-            Map<String, String> map = new HashMap<>();
+            Map<String, String> map = new HashMap<>(2);
             map.put("params", params);
-            map.put("operationType", operationType);
-            OperaLogDO oper = new OperaLogDO();
-            oper.setMethod(GlobalConstant.METHODOPERA);
+            map.put(OperaConstant.OPERATION_TYPE, operationType);
             //操作信息
-            LogUtil.operAspect(request, null, map, oper);
+            LogUtil.operAspect(request, null, map, response);
             return null;
         } catch (Exception e) {
             // 记录本地异常日志
@@ -88,28 +89,43 @@ public class LogFilter extends ZuulFilter {
             methodName = str[str.length - 1];
         }
 
-        String operaMethodType = "";
+        String operaMethodType;
         //add  mod  del update save insert  remove  edit change  set
         if (null != methodName) {
-            if (methodName.startsWith("add") || methodName.startsWith("save") || methodName.startsWith("insert") || methodName.startsWith("create")) {
-                operaMethodType = OpearConstant.CONTROLLER_OPEAR_METHOD_TYPE_ADD;
-                return operaMethodType;
+            //循环判断常量数据的操作类型 增加操作关键字
+            for (String obj : OperaConstant.ADD_OPEAR_FIELD) {
+                if (methodName.startsWith(obj)) {
+                    operaMethodType = OperaConstant.CONTROLLER_OPEAR_METHOD_TYPE_ADD;
+                    return operaMethodType;
+                }
             }
-            if (methodName.startsWith("del") || methodName.startsWith("remove")) {
-                operaMethodType = OpearConstant.CONTROLLER_OPEAR_METHOD_TYPE_DEL;
-                return operaMethodType;
+            //删除操作关键字
+            for (String obj : OperaConstant.DEL_OPEAR_FIELD) {
+                if (methodName.startsWith(obj)) {
+                    operaMethodType = OperaConstant.CONTROLLER_OPEAR_METHOD_TYPE_DEL;
+                    return operaMethodType;
+                }
             }
-            if (methodName.startsWith("mod") || methodName.startsWith("update") || methodName.startsWith("edit") || methodName.startsWith("set")) {
-                operaMethodType = OpearConstant.CONTROLLER_OPEAR_METHOD_TYPE_MOD;
-                return operaMethodType;
+            //修改操作关键字
+            for (String obj : OperaConstant.ALTER_OPEAR_FIELD) {
+                if (methodName.startsWith(obj)) {
+                    operaMethodType = OperaConstant.CONTROLLER_OPEAR_METHOD_TYPE_MOD;
+                    return operaMethodType;
+                }
             }
-            if (methodName.startsWith("upload") || methodName.startsWith("fdfs") || methodName.startsWith("excelImp")) {
-                operaMethodType = OpearConstant.CONTROLLER_OPEAR_METHOD_TYPE_UPLOAD;
-                return operaMethodType;
+            //上传操作关键字
+            for (String obj : OperaConstant.UPLOAD_OPEAR_FIELD) {
+                if (methodName.startsWith(obj)) {
+                    operaMethodType = OperaConstant.CONTROLLER_OPEAR_METHOD_TYPE_UPLOAD;
+                    return operaMethodType;
+                }
             }
-            if (methodName.startsWith("down")) {
-                operaMethodType = OpearConstant.CONTROLLER_OPEAR_METHOD_TYPE_DOWNLOAD;
-                return operaMethodType;
+            //下载操作关键字
+            for (String obj : OperaConstant.DOWN_OPEAR_FIELD) {
+                if (methodName.startsWith(obj)) {
+                    operaMethodType = OperaConstant.CONTROLLER_OPEAR_METHOD_TYPE_DOWNLOAD;
+                    return operaMethodType;
+                }
             }
         }
         return "";

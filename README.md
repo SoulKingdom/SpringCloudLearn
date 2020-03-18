@@ -12,8 +12,9 @@
 -- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
 -- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
 -- sc-zuul（9013） Spring Cloud Zuul 网关，服务过滤，路由重试等功能  
--- sc-zipkin-server(9014) Spring Cloud Sleuth 服务监控 
--- sc-common Spring Cloud common 服务基础操作
+-- sc-zipkin-server(9014) Spring Cloud Sleuth 服务监控  
+-- sc-common Spring Cloud common 服务基础操作  
+--- sc-util 服务工具类
 ## 二、注册中心Eureka的创建
 ### 功能点
    1. 服务注册与发现的组件，也就是服务注册中心
@@ -266,7 +267,7 @@
  就是说在分布式存储系统中，最多只能实现上面的两点。而由于当前的网络硬件肯定会出现延迟丢包等问题，所以分区容忍性是我们必须需要实现的。所以我们只能在一致性和可用性之间进行权衡  
  ## Spring Cloud Gateway(代替zuul)  
  ### 介绍
-  Spring Cloud Gateway 提供旅游,Filter,安全，监控/指标，和限流等；  
+  Spring Cloud Gateway 提供路由,Filter,安全，监控/指标，和限流等；  
   Gateway是简单有效的统一的 API 路由管理方式  
 ### 功能点  
   + Predicate 介绍
@@ -306,5 +307,18 @@
        - key-resolver：使用 SpEL 按名称引用 bean
      - 设置限流策略 创建Config类
    + 重试
-   #### 创建基础功能模块
-     
+## 创建基础功能模块 SpringCommon
+### 介绍
+   Spring Cloud Common 提供了基本功能：通过Http外部接口调用,restTemplate内部调用；  
+### 功能点一  sc-util 工具类集合
+  + 通用工具类
+    - http  通过http调用外部接口
+    - request 获取request中的信息工具类
+    - time 需要格式化的工具类
+### 功能点二  sc-core 核心代码
+  + 通用工具类
+    - restfull  controller层响应信息
+    - exception controller程序出错之后信息
+### 功能点二  sc-base 基础符号
+   + 通用工具类
+    - constant  通用常量

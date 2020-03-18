@@ -2,6 +2,13 @@ package com.springcloud.sczuul.constant;
 
 import org.springframework.web.context.WebApplicationContext;
 
+/**
+ * 全局常量
+ *
+ * @dept 上海软件研发中心
+ * @author HaoXin.Liu
+ * @date 2020/3/9 21:19
+ **/
 public interface GlobalConstant {
     /**
      * 当前登录用户
@@ -81,16 +88,16 @@ public interface GlobalConstant {
     String APPID = "wisdom_campus";
     String APPLICATIONNAME = "wisdom_campus";
     /**
-     * 操作类型
+     * login类型
      */
-    String METHODOPERA = "1";
+    String METHODACCESS = "2";
     /**
      * access 类型
      */
-    String METHODERROR = "2";
+    String METHODLOGIN = "1";
     /**
-     * login类型
+     * 操作类型
      */
-    String METHODACCESS = "3";
+    String METHODOPERA = "3";
 
 }

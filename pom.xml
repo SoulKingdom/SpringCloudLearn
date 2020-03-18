@@ -36,6 +36,7 @@
         <module>sc-zipkin-server</module>
         <module>sc-api-gateway</module>
         <module>sc-security</module>
+        <module>sc-common/sc-util</module>
     </modules>
     <!--设置默认jdk、编码格式和云服务版本 start-->
     <properties>
