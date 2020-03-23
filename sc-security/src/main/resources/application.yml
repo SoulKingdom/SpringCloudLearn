@@ -1,0 +1,17 @@
+server:
+  port: 9020
+spring:
+  security:
+    user:
+      name: lhx
+      password: 12345
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-wait: 200
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000

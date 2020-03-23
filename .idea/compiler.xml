@@ -21,15 +21,16 @@
         <module name="sc-eureka-client" />
         <module name="sc-eureka-consumer" />
         <module name="sc-api-gateway" />
-        <module name="common" />
         <module name="sc-util" />
         <module name="sc-zipkin-server" />
         <module name="sc-zuul" />
         <module name="sc-config-client" />
+        <module name="sc-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="aop" target="1.8" />
+      <module name="common" target="1.8" />
       <module name="core" target="1.8" />
       <module name="demo" target="1.8" />
       <module name="sc-common" target="1.8" />
