@@ -42,7 +42,7 @@ public class LogController {
      * @author HaoXin.Liu
      * @date 2020/2/29 15:05
      **/
-    @RequestMapping(value = "/listLog", method = RequestMethod.POST)
+        @RequestMapping(value = "/listLog", method = RequestMethod.POST)
     public AppResponse listLog(LogCond logCond, HttpServletRequest request) {
         try {
             OperaLogVO operaLogVo = logService.listOperLog(logCond);

@@ -1,4 +1,4 @@
-package com.neusoft.gateway.log.entity;
+package com.springcloud.sczuul.log.entity;
 
 /**
  * 操作日志数据处理

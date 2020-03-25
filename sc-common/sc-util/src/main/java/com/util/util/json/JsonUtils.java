@@ -1,4 +1,4 @@
-package com.util.util.time;
+package com.util.util.json;
 
 import com.google.gson.Gson;
 

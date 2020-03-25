@@ -1,12 +1,12 @@
 package com.springcloud.sczuul.log.service.impl;
 
 import com.github.pagehelper.PageInfo;
-import com.neusoft.core.page.PageUtils;
-import com.neusoft.gateway.log.dao.OperaLogDao;
 import com.neusoft.gateway.log.entity.LogCond;
-import com.neusoft.gateway.log.entity.OperaLogDTO;
-import com.neusoft.gateway.log.entity.OperaLogVO;
-import com.neusoft.gateway.log.service.LogService;
+import com.springcloud.core.page.PageUtils;
+import com.springcloud.sczuul.log.dao.OperaLogDao;
+import com.springcloud.sczuul.log.entity.OperaLogDTO;
+import com.springcloud.sczuul.log.entity.OperaLogVO;
+import com.springcloud.sczuul.log.service.LogService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

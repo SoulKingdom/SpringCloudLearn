@@ -1,6 +1,6 @@
 package com.springcloud.core.restful;
 
-import com.util.util.time.JsonUtils;
+import com.util.util.json.JsonUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;

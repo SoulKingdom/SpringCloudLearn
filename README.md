@@ -7,10 +7,10 @@
 -- sc-client-to(9007)第二个注册服务  9005和9007进行负载均衡的作用,相同名称
 -- sc-eureka-consumer(9006)通过feign进行服务调用服务  
 -- sc-ribbon(9008)ribbon进行远程服务调用  
--- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控
+-- sc-hystrix-dashboard-turbine(9009)熔断器集群Turbine监控 
 -- sc-config-server(9010) Spring Cloud Config 配置中心
 -- sc-config-client(9011) Spring Cloud Config 配置中心客户端   
--- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用
+-- sc-config-server(9012) Spring Cloud Config 配置中心集群 高可用 
 -- sc-zuul（9013） Spring Cloud Zuul 网关，服务过滤，路由重试等功能  
 -- sc-zipkin-server(9014) Spring Cloud Sleuth 服务监控  
 -- sc-common Spring Cloud common 服务基础操作  
@@ -314,11 +314,13 @@
   + 通用工具类
     - http  通过http调用外部接口
     - request 获取request中的信息工具类
-    - time 需要格式化的工具类
+    - time 时间处理
+    - json json操作
 ### 功能点二  sc-core 核心代码
   + 通用工具类
     - restfull  controller层响应信息
     - exception controller程序出错之后信息
+    - page mysql分页核心包，通过后缀ByPage进行分页
 ### 功能点二  sc-base 基础符号
    + 通用工具类
     - constant  通用常量

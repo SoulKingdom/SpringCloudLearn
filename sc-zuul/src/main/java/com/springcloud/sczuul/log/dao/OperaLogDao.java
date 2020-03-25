@@ -1,8 +1,8 @@
 package com.springcloud.sczuul.log.dao;
 
 import com.neusoft.gateway.log.entity.LogCond;
-import com.neusoft.gateway.log.entity.OperaLogDTO;
 import com.springcloud.sczuul.log.entity.OperaLogDO;
+import com.springcloud.sczuul.log.entity.OperaLogDTO;
 
 import java.util.List;
 
