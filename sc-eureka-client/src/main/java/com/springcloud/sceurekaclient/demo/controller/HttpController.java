@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.ws.rs.Produces;
 
 /**
  *  @dept 上海软件研发中心
@@ -22,10 +24,20 @@ import javax.annotation.Resource;
 @Api("规范框架demo")
 @Validated
 @RestController
-@RequestMapping("demo")
+@RequestMapping("http")
 public class HttpController {
+
+    private static HttpService httpClient;
+
+
     @Resource
-    private static HttpService httpService;
+    private HttpService httpService;
+
+    @PostConstruct
+    public void init() {
+        httpClient = httpService;
+    }
+
 
     @ApiOperation(value = "Http调用Api的调用方法", notes = "调用外部api")
     @GetMapping(value = "/httpTest")

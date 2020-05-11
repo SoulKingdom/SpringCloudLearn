@@ -1,7 +1,7 @@
 package com.springcloud.sceurekaclient.demo.service;
 
-import com.springcloud.util.http.HttpClientResult;
-import com.springcloud.util.http.HttpClientUtils;
+import com.util.util.http.HttpClientResult;
+import com.util.util.http.HttpClientUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
